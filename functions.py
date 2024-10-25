@@ -1,4 +1,4 @@
-from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader, TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings.sentence_transformer import (
     SentenceTransformerEmbeddings,
@@ -13,13 +13,33 @@ warnings.filterwarnings('ignore')
 # Function to create the database from a sample PDF
 def create_db():
 
-    if not os.path.exists(r"C:\Users\sbynd\interviewtest1\files\sample.pdf"):
-        print("File does not exist.")
-    else:
-        loader = PyPDFLoader(r"C:\Users\sbynd\interviewtest1\files\sample.pdf")
+    # Specify the file paths for different document types
+    pdf_path = r"C:\Users\sbynd\interviewtest2\files\sample.pdf"
+    docx_path = r"C:\Users\sbynd\interviewtest2\files\sample.docx"
+    txt_path = r"C:\Users\sbynd\interviewtest2\files\sample.txt"
 
-    pages = loader.load()
+    # Initialize an empty list for pages
+    pages = []
 
+
+    # Load PDF
+    if os.path.exists(pdf_path):
+        loader = PyPDFLoader(pdf_path)
+        pages.extend(loader.load())
+
+    # Load TXT
+    if os.path.exists(txt_path):
+         txt_text = TextLoader(txt_path)
+         pages.extend(txt_text.load())
+
+    # Load DOCX
+    if os.path.exists(docx_path):
+        docx_text = Docx2txtLoader(docx_path)
+        pages.extend(docx_text.load())
+
+    if not pages:
+        print("No valid files found.")
+        return
 
     # Split the loaded text into manageable chunks
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100,length_function=len,
