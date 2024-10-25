@@ -40,6 +40,13 @@ Here’s an example of how to query the nearest neighbors:
   "neighbours": 5
 }
 
+## Output
+Text Query
+![Text Query Output](text query.png)
+
+Docx Query
+![Docx Query Output](docx query.png)
+
 ## Changes Made:
 1. **Updated Description**: Mentioned that the server supports ingestion of PDF, DOCX, and TXT documents.
 2. **Updated Features**: Added support for DOCX and TXT document formats in the features list.
