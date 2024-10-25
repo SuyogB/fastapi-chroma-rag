@@ -42,10 +42,10 @@ Here’s an example of how to query the nearest neighbors:
 
 ## Output
 Text Query
-![Text Query Output](text query.png)
+![text query.png](https://github.com/SuyogB/fastapi-chroma-rag/blob/main/text%20query.png)
 
 Docx Query
-![Docx Query Output](docx query.png)
+![docx query.png](https://github.com/SuyogB/fastapi-chroma-rag/blob/main/docx%20query.png)
 
 ## Changes Made:
 1. **Updated Description**: Mentioned that the server supports ingestion of PDF, DOCX, and TXT documents.
